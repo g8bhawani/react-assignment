@@ -1,0 +1,85 @@
+@import '../../../_variables.scss';
+
+#main {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
+  margin-left: $menu-width-tablet;
+  height: 100%;
+  width: calc(100% - #{$menu-width-tablet});
+  background-color: rgb(248, 248, 248);
+}
+
+#sidebar {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 501;
+}
+
+.main-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 502;
+  height: 100%;
+  border-right: 1px solid $primary-color;
+  .logo {
+    padding: 10px 18px;
+    margin: 25px 0;
+  }
+  .main-menu-list {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.main-menu > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.route-enter {
+  opacity: 0.01;
+  transform: translate3d(0, 80px, 0);
+}
+
+.route-enter.route-enter-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: transform 300ms ease-in, opacity 300ms ease-in;
+}
+
+.route-leave {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.route-leave.route-leave-active {
+  opacity: 0.01;
+  transform: translate3d(0, 80px, 0);
+  transition: transform 300ms ease-in, opacity 300ms ease-in;
+}
+
+@media (min-width: $tablet-breakpoint + 1) {
+  #main {
+    margin-left: $menu-width;
+    width: calc(100% - #{$menu-width});
+  }
+
+  .main-menu {
+    width: $menu-width;
+  }
+}
+
+@media (max-width: $tablet-breakpoint + 1) {
+  .main-menu {
+    width: $menu-width;
+  }
+}
